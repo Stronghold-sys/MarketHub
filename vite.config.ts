@@ -2,47 +2,36 @@ import { defineConfig } from 'vite'
 import path from 'path'
 import tailwindcss from '@tailwindcss/vite'
 import react from '@vitejs/plugin-react'
-import obfuscator from 'vite-plugin-obfuscator'
 import { figmaAssetsPlugin } from './vite-plugin-figma-assets'
 
 export default defineConfig({
   plugins: [
+    // The React and Tailwind plugins are both required for Make, even if
+    // Tailwind is not being actively used – do not remove them
     react(),
     tailwindcss(),
-
-    // Handle figma:asset imports
+    // Handle figma:asset imports in VS Code (auto-disables in Figma Make)
     figmaAssetsPlugin({
-      fallbackImage:
-        'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&h=500&fit=crop',
-      debug: false,
-    }),
-
-    // 🔒 OBFUSCATION (PRODUCTION HARDENING)
-    obfuscator({
-      options: {
-        compact: true,
-        controlFlowFlattening: true,
-        deadCodeInjection: true,
-        stringArray: true,
-        stringArrayThreshold: 0.75,
-      },
+      fallbackImage: 'https://images.unsplash.com/photo-1505740420928-5e560c06d30e?w=500&h=500&fit=crop',
+      debug: false, // Set to true to see plugin activity
     }),
   ],
-
   resolve: {
     alias: {
+      // Alias @ to the src directory
       '@': path.resolve(__dirname, './src'),
     },
   },
-
-  // Dependency optimization (tetap, jangan diubah)
+  // ✅ FIXED: Force dependency optimization on startup to prevent reload
   optimizeDeps: {
-    force: true,
+    // Force pre-optimization on startup
+    force: true, // ✅ CRITICAL v2.0: Force rebuild to clear maintenanceGuard.ts cache
+    // Include ALL dependencies to prevent runtime discovery
     include: [
       'react',
       'react-dom',
       'react/jsx-runtime',
-      'react-router',
+      'react-router', // ✅ FIXED v17.2: Only react-router (v7), NOT react-router-dom
       '@supabase/supabase-js',
       'lucide-react',
       'sonner',
@@ -51,8 +40,7 @@ export default defineConfig({
       'clsx',
       'tailwind-merge',
       'class-variance-authority',
-
-      // Radix UI
+      // Radix UI components
       '@radix-ui/react-tabs',
       '@radix-ui/react-dialog',
       '@radix-ui/react-dropdown-menu',
@@ -79,10 +67,10 @@ export default defineConfig({
       '@radix-ui/react-navigation-menu',
       '@radix-ui/react-slider',
       '@radix-ui/react-toggle-group',
-
-      // Others
+      // Embla Carousel - ✅ CRITICAL: Add these to prevent reload!
       'embla-carousel-react',
       'embla-carousel-autoplay',
+      // Other dependencies
       'react-hook-form',
       'input-otp',
       'cmdk',
@@ -92,28 +80,27 @@ export default defineConfig({
       'react-day-picker',
       'next-themes',
     ],
+    // Exclude Vite internals
     exclude: ['@vite/client', '@vite/env'],
   },
-
-  // 🔒 BUILD HARDENING (INI KUNCI)
+  // Optimize for dynamic imports
   build: {
-    sourcemap: false, // ⛔ MATIKAN SOURCE MAP (WAJIB)
     rollupOptions: {
       output: {
-        manualChunks: undefined,
+        manualChunks: undefined, // Let Vite handle chunking automatically
       },
     },
   },
-
-  // Dev server (tetap, ini hanya DEV)
+  // ✅ FIXED: Disable dependency discovery in development
   server: {
     fs: {
       strict: false,
     },
+    // ✅ NEW v17.1: Force no-cache headers in development to prevent stale code issues
     headers: {
       'Cache-Control': 'no-cache, no-store, must-revalidate',
-      Pragma: 'no-cache',
-      Expires: '0',
-    },
+      'Pragma': 'no-cache',
+      'Expires': '0'
+    }
   },
 })
