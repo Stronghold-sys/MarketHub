@@ -57,21 +57,18 @@ body[data-scroll-locked] {
 
 /* RESPONSIVE ADMIN LAYOUT */
 @media (max-width: 1023px) {
-  /* Hide desktop sidebar on mobile/tablet */
   .admin-sidebar-fixed {
     display: none !important;
   }
-  
-  /* Remove margin on mobile */
+
   .admin-main-scrollable {
     margin-left: 0 !important;
-    margin-top: 56px !important; /* Space for mobile header */
+    margin-top: 56px !important;
     height: calc(100vh - 56px) !important;
   }
 }
 
 @media (min-width: 1024px) {
-  /* Desktop: Normal layout */
   .admin-main-scrollable {
     margin-left: 256px !important;
     margin-top: 0 !important;
@@ -145,7 +142,6 @@ body[data-scroll-locked] {
 
 /* ==================== SPLASH SCREEN ANIMATIONS ==================== */
 
-/* Pulse Slow Animation */
 @keyframes pulse-slow {
   0%, 100% {
     opacity: 0.3;
@@ -161,7 +157,6 @@ body[data-scroll-locked] {
   animation: pulse-slow 3s ease-in-out infinite;
 }
 
-/* Shimmer Effect */
 @keyframes shimmer {
   0% {
     transform: translateX(-100%);
@@ -175,7 +170,6 @@ body[data-scroll-locked] {
   animation: shimmer 2s infinite;
 }
 
-/* Bounce In Animation */
 @keyframes bounceIn {
   0% {
     opacity: 0;
@@ -197,7 +191,6 @@ body[data-scroll-locked] {
   animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-/* Fade In Animation */
 @keyframes fadeIn {
   from {
     opacity: 0;
@@ -211,7 +204,6 @@ body[data-scroll-locked] {
   animation: fadeIn 0.5s ease-in-out;
 }
 
-/* Scale Up Animation */
 @keyframes scaleUp {
   from {
     opacity: 0;
@@ -227,7 +219,6 @@ body[data-scroll-locked] {
   animation: scaleUp 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* Rotate In Animation */
 @keyframes rotateIn {
   from {
     opacity: 0;
@@ -243,7 +234,6 @@ body[data-scroll-locked] {
   animation: rotateIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-/* Glow Animation */
 @keyframes glow {
   0%, 100% {
     box-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
@@ -259,14 +249,12 @@ body[data-scroll-locked] {
 
 /* ==================== FLASH SALE INFINITE SCROLL ==================== */
 
-/* Flash Sale Scroll Container */
 .flash-sale-scroll {
   width: 100%;
   overflow: hidden;
   position: relative;
 }
 
-/* Flash Sale Track - Infinite scrolling animation */
 .flash-sale-track {
   display: flex;
   gap: 1rem;
@@ -274,18 +262,15 @@ body[data-scroll-locked] {
   width: fit-content;
 }
 
-/* Pause animation on hover */
 .flash-sale-scroll:hover .flash-sale-track {
   animation-play-state: paused;
 }
 
-/* Flash Sale Item */
 .flash-sale-item {
   flex-shrink: 0;
   width: 200px;
 }
 
-/* Responsive width */
 @media (max-width: 640px) {
   .flash-sale-item {
     width: 160px;
@@ -304,12 +289,24 @@ body[data-scroll-locked] {
   }
 }
 
-/* Infinite Scroll Animation */
 @keyframes infiniteScroll {
   0% {
     transform: translateX(0);
   }
   100% {
     transform: translateX(-50%);
+  }
+}
+
+/* ==================== FIX CHATBOT vs BOTTOM NAV (MOBILE) ==================== */
+
+@media (max-width: 768px) {
+  iframe[src*="getbutton"],
+  iframe[src*="widget"],
+  .getbutton-widget,
+  #getbutton-widget {
+    bottom: 104px !important;
+    right: 16px !important;
+    z-index: 9999 !important;
   }
 }
