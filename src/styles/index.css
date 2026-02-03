@@ -176,8 +176,7 @@ body[data-scroll-locked] {
     bottom: 0 !important;
     right: 16px !important;
 
-    /* KUNCI UTAMA: geser secara visual */
-    transform: translateY(-170px) !important;
+    transform: translateY(-120px) !important;
 
     z-index: 2147483647 !important;
     pointer-events: auto !important;
