@@ -5,17 +5,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>MarketHub</title>
 
-    <!-- FAVICON MarketHub -->
+    <!-- Favicon -->
     <link rel="icon" type="image/png" href="/markethub.png" />
   </head>
 
   <body>
+    <!-- Root React -->
     <div id="root"></div>
+
+    <!-- GetButton widget (HARUS sebelum React, TANPA defer) -->
+    <script src="https://static.getbutton.io/widget/bundle.js?id=rG20A"></script>
 
     <!-- React entry -->
     <script type="module" src="/src/main.tsx"></script>
-
-    <!-- GetButton widget -->
-  <script src="https://static.getbutton.io/widget/bundle.js?id=rG20A"></script>
   </body>
 </html>
