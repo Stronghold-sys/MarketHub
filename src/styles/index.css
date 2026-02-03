@@ -19,6 +19,8 @@ body[data-scroll-locked] {
   margin-right: 0 !important;
 }
 
+/* ==================== ADMIN LAYOUT ==================== */
+
 /* Admin Layout Sidebar - ALWAYS FIXED */
 .admin-sidebar-fixed {
   position: fixed !important;
@@ -78,16 +80,12 @@ body[data-scroll-locked] {
 /* Prevent flicker during navigation */
 .admin-main-scrollable > div {
   will-change: contents;
-  animation: fadeIn 0.15s ease-in;
+  animation: fadeInAdmin 0.15s ease-in;
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0.95;
-  }
-  to {
-    opacity: 1;
-  }
+@keyframes fadeInAdmin {
+  from { opacity: 0.95; }
+  to { opacity: 1; }
 }
 
 /* Smooth transitions for admin pages */
@@ -101,21 +99,19 @@ body[data-scroll-locked] {
   -moz-osx-font-smoothing: grayscale;
 }
 
-/* Flash Sale Countdown Animation */
+/* ==================== UI ANIMATIONS ==================== */
+
+/* Flash Sale Countdown */
 @keyframes pulse-subtle {
-  0%, 100% {
-    transform: scale(1);
-  }
-  50% {
-    transform: scale(1.02);
-  }
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.02); }
 }
 
 .countdown-digit {
   animation: pulse-subtle 2s ease-in-out infinite;
 }
 
-/* Feature Card Hover Effect */
+/* Feature Card */
 .feature-card {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -124,33 +120,20 @@ body[data-scroll-locked] {
   transform: translateY(-2px);
 }
 
-/* Smooth entrance animation */
+/* Slide In */
 @keyframes slideInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(20px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 .animate-slide-in-up {
   animation: slideInUp 0.5s ease-out;
 }
 
-/* ==================== SPLASH SCREEN ANIMATIONS ==================== */
-
+/* Splash Animations */
 @keyframes pulse-slow {
-  0%, 100% {
-    opacity: 0.3;
-    transform: scale(1);
-  }
-  50% {
-    opacity: 0.5;
-    transform: scale(1.05);
-  }
+  0%, 100% { opacity: 0.3; transform: scale(1); }
+  50% { opacity: 0.5; transform: scale(1.05); }
 }
 
 .animate-pulse-slow {
@@ -158,12 +141,8 @@ body[data-scroll-locked] {
 }
 
 @keyframes shimmer {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
 }
 
 .animate-shimmer {
@@ -171,83 +150,17 @@ body[data-scroll-locked] {
 }
 
 @keyframes bounceIn {
-  0% {
-    opacity: 0;
-    transform: scale(0.3);
-  }
-  50% {
-    opacity: 1;
-    transform: scale(1.1);
-  }
-  70% {
-    transform: scale(0.9);
-  }
-  100% {
-    transform: scale(1);
-  }
+  0% { opacity: 0; transform: scale(0.3); }
+  50% { opacity: 1; transform: scale(1.1); }
+  70% { transform: scale(0.9); }
+  100% { transform: scale(1); }
 }
 
 .animate-bounceIn {
   animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-.animate-fadeIn {
-  animation: fadeIn 0.5s ease-in-out;
-}
-
-@keyframes scaleUp {
-  from {
-    opacity: 0;
-    transform: scale(0.8);
-  }
-  to {
-    opacity: 1;
-    transform: scale(1);
-  }
-}
-
-.animate-scaleUp {
-  animation: scaleUp 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-@keyframes rotateIn {
-  from {
-    opacity: 0;
-    transform: rotate(-180deg) scale(0);
-  }
-  to {
-    opacity: 1;
-    transform: rotate(0) scale(1);
-  }
-}
-
-.animate-rotateIn {
-  animation: rotateIn 0.8s cubic-bezier(0.34, 1.56, 0.64, 1);
-}
-
-@keyframes glow {
-  0%, 100% {
-    box-shadow: 0 0 20px rgba(34, 197, 94, 0.3);
-  }
-  50% {
-    box-shadow: 0 0 40px rgba(34, 197, 94, 0.6);
-  }
-}
-
-.animate-glow {
-  animation: glow 2s ease-in-out infinite;
-}
-
-/* ==================== FLASH SALE INFINITE SCROLL ==================== */
+/* ==================== FLASH SALE SCROLL ==================== */
 
 .flash-sale-scroll {
   width: 100%;
@@ -272,41 +185,31 @@ body[data-scroll-locked] {
 }
 
 @media (max-width: 640px) {
-  .flash-sale-item {
-    width: 160px;
-  }
-  .flash-sale-track {
-    animation-duration: 30s;
-  }
+  .flash-sale-item { width: 160px; }
+  .flash-sale-track { animation-duration: 30s; }
 }
 
 @media (min-width: 641px) and (max-width: 1024px) {
-  .flash-sale-item {
-    width: 180px;
-  }
-  .flash-sale-track {
-    animation-duration: 35s;
-  }
+  .flash-sale-item { width: 180px; }
+  .flash-sale-track { animation-duration: 35s; }
 }
 
 @keyframes infiniteScroll {
-  0% {
-    transform: translateX(0);
-  }
-  100% {
-    transform: translateX(-50%);
-  }
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
 }
 
-/* ==================== FIX CHATBOT vs BOTTOM NAV (MOBILE) ==================== */
+/* ==================== FINAL FIX CHATBOT vs BOTTOM NAV ==================== */
 
 @media (max-width: 768px) {
   iframe[src*="getbutton"],
   iframe[src*="widget"],
   .getbutton-widget,
   #getbutton-widget {
-    bottom: 104px !important;
+    position: fixed !important;
+    bottom: calc(140px + env(safe-area-inset-bottom)) !important;
     right: 16px !important;
-    z-index: 9999 !important;
+    z-index: 2147483647 !important;
+    pointer-events: auto !important;
   }
 }
