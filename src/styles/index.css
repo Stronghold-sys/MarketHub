@@ -101,7 +101,6 @@ body[data-scroll-locked] {
 
 /* ==================== UI ANIMATIONS ==================== */
 
-/* Flash Sale Countdown */
 @keyframes pulse-subtle {
   0%, 100% { transform: scale(1); }
   50% { transform: scale(1.02); }
@@ -111,7 +110,6 @@ body[data-scroll-locked] {
   animation: pulse-subtle 2s ease-in-out infinite;
 }
 
-/* Feature Card */
 .feature-card {
   transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
@@ -120,7 +118,6 @@ body[data-scroll-locked] {
   transform: translateY(-2px);
 }
 
-/* Slide In */
 @keyframes slideInUp {
   from { opacity: 0; transform: translateY(20px); }
   to { opacity: 1; transform: translateY(0); }
@@ -128,36 +125,6 @@ body[data-scroll-locked] {
 
 .animate-slide-in-up {
   animation: slideInUp 0.5s ease-out;
-}
-
-/* Splash Animations */
-@keyframes pulse-slow {
-  0%, 100% { opacity: 0.3; transform: scale(1); }
-  50% { opacity: 0.5; transform: scale(1.05); }
-}
-
-.animate-pulse-slow {
-  animation: pulse-slow 3s ease-in-out infinite;
-}
-
-@keyframes shimmer {
-  0% { transform: translateX(-100%); }
-  100% { transform: translateX(100%); }
-}
-
-.animate-shimmer {
-  animation: shimmer 2s infinite;
-}
-
-@keyframes bounceIn {
-  0% { opacity: 0; transform: scale(0.3); }
-  50% { opacity: 1; transform: scale(1.1); }
-  70% { transform: scale(0.9); }
-  100% { transform: scale(1); }
-}
-
-.animate-bounceIn {
-  animation: bounceIn 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55);
 }
 
 /* ==================== FLASH SALE SCROLL ==================== */
@@ -199,16 +166,19 @@ body[data-scroll-locked] {
   100% { transform: translateX(-50%); }
 }
 
-/* ==================== FINAL FIX CHATBOT vs BOTTOM NAV ==================== */
-
 @media (max-width: 768px) {
-  iframe[src*="getbutton"],
-  iframe[src*="widget"],
-  .getbutton-widget,
-  #getbutton-widget {
+  iframe[src*="noupe"],
+  iframe[src*="embed"],
+  iframe[src*="chatbot"],
+  div[id*="noupe"],
+  div[class*="noupe"] {
     position: fixed !important;
-    bottom: calc(140px + env(safe-area-inset-bottom)) !important;
+    bottom: 0 !important;
     right: 16px !important;
+
+    /* KUNCI UTAMA: geser secara visual */
+    transform: translateY(-170px) !important;
+
     z-index: 2147483647 !important;
     pointer-events: auto !important;
   }
