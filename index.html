@@ -17,6 +17,10 @@
     <meta name="robots" content="index, follow" />
     <meta name="googlebot" content="index, follow" />
 
+    <!--  GOOGLE SEARCH CONSOLE VERIFICATION -->
+    <meta name="google-site-verification" content="google982e4b817d0c74a3.html" />
+    <meta name="google-site-verification" content="oLxzUpXBoM7njmipwVM1hajTvq0bDjtAmgsFl2j4D4M" />
+
     <!-- Meta Description -->
     <meta
       name="description"
@@ -46,66 +50,6 @@
       content="https://markethubid.my.id/markethub.png"
     />
 
-    <!-- Preconnect (opsional, tapi bagus) -->
+    <!-- Preconnect -->
     <link rel="preconnect" href="https://cdn.openwidget.com" />
   </head>
-
-  <body>
-    <noscript>
-      JavaScript harus diaktifkan untuk menjalankan aplikasi MarketHub.
-    </noscript>
-
-    <div id="root"></div>
-
-    <!-- ===== ChatBot (OpenWidget) ===== -->
-    <script>
-      window.__ow = window.__ow || {};
-      window.__ow.organizationId = "d1174af6-6023-4db6-8bfb-93e83025d95d";
-      window.__ow.template_id = "adcda83b-bc10-4ba6-a858-dc67e3a941c4";
-      window.__ow.integration_name = "manual_settings";
-      window.__ow.product_name = "chatbot";
-      (function (n, t, c) {
-        function i(n) {
-          return e._h ? e._h.apply(null, n) : e._q.push(n);
-        }
-        var e = {
-          _q: [],
-          _h: null,
-          _v: "2.0",
-          on: function () {
-            i(["on", c.call(arguments)]);
-          },
-          once: function () {
-            i(["once", c.call(arguments)]);
-          },
-          off: function () {
-            i(["off", c.call(arguments)]);
-          },
-          get: function () {
-            if (!e._h)
-              throw new Error(
-                "[OpenWidget] You can't use getters before load."
-              );
-            return i(["get", c.call(arguments)]);
-          },
-          call: function () {
-            i(["call", c.call(arguments)]);
-          },
-          init: function () {
-            var n = t.createElement("script");
-            n.async = true;
-            n.type = "text/javascript";
-            n.src = "https://cdn.openwidget.com/openwidget.js";
-            t.head.appendChild(n);
-          },
-        };
-        !n.__ow.asyncInit && e.init();
-        n.OpenWidget = n.OpenWidget || e;
-      })(window, document, [].slice);
-    </script>
-    <!-- ===== End ChatBot ===== -->
-
-    <!-- React Entry -->
-    <script type="module" src="/src/main.tsx"></script>
-  </body>
-</html>
